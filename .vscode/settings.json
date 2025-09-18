@@ -5,6 +5,10 @@
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
+  // Experimenting with these
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.experimental.showMoves": true,
+  // ------------------------
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.tsx": "${dirname} (page)",
     "**/app/**/layout.tsx": "${dirname} (layout)"
