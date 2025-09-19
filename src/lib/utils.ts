@@ -41,3 +41,5 @@ export const cx = (...inputs: ClassValue[]): string => {
 };
 
 export const cn = (...inputs: ClassValue[]) => twMerge(cx(...inputs));
+
+export const hasWindow = () => typeof window !== "undefined";
