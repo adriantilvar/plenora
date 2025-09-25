@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import z from "zod";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useQueryString } from "@/hooks/use-query-state";
+import { useQueryState } from "@/hooks/use-query-state";
 
 type ConfigurationStep = "goal" | "persona" | "rules" | "resources";
 type ConfigurationTab = {
@@ -30,9 +30,9 @@ const configTabs = [
   },
 ] satisfies ConfigurationTab[];
 
-export default function ScriptConfiguration() {
+export default function ScriptConfigurationPage() {
   const defaultStep = configTabs[0].key;
-  const [step, setStep] = useQueryString("step", {
+  const [step, setStep] = useQueryState("step", {
     defaultValue: defaultStep,
     schema: z.literal(configTabs.map((tab) => tab.key)),
   });
@@ -85,7 +85,9 @@ export default function ScriptConfiguration() {
             className="w-full flex-row"
             activationMode="manual" // BUG: if not specified, onValueChange triggers twice
             onValueChange={(value) => {
-              if (value !== step) setStep(value);
+              if (value !== step) {
+                setStep(value);
+              }
             }}
           >
             <TabsList className="flex h-fit w-32 flex-col bg-transparent p-0">
